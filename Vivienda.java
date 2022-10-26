@@ -2,7 +2,7 @@ public class Vivienda {
     private int habitantes;
     private double comida;
     private boolean alquiler;
-    private int gastoDomicilio;
+    private double gastoDomicilio;
 
 
     public Vivienda() {
@@ -12,7 +12,7 @@ public class Vivienda {
     }
 
 
-    public Vivienda(int habitantes, double comida, boolean alquiler, int gastoDomicilio) {
+    public Vivienda(int habitantes, double comida, boolean alquiler, double gastoDomicilio) {
         this.habitantes = habitantes;
         this.comida = comida;
         this.alquiler = alquiler;
@@ -48,11 +48,11 @@ public class Vivienda {
         this.alquiler = alquiler;
     }
 
-    public int getGastoDomicilio() {
+    public double getGastoDomicilio() {
         return this.gastoDomicilio;
     }
 
-    public void setGastoDomicilio(int gastoDomicilio) {
+    public void setGastoDomicilio(double gastoDomicilio) {
         this.gastoDomicilio = gastoDomicilio;
     }
 

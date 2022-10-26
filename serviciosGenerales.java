@@ -1,6 +1,5 @@
 public class serviciosGenerales{
-    private int colegiaturas;
-    private double comida;
+    private double colegiaturas;
     private double consultaMedica;
     private double medicina;
     private double seguro;
@@ -9,7 +8,6 @@ public class serviciosGenerales{
 
     public serviciosGenerales() {
         colegiaturas = 0;
-        comida = 0;
         consultaMedica = 0;
         medicina = 0;
         seguro = 0;
@@ -17,9 +15,8 @@ public class serviciosGenerales{
     }
 
 
-    public serviciosGenerales(int colegiaturas, double comida, double consultaMedica, double medicina, double seguro, double ocio) {
+    public serviciosGenerales(double colegiaturas, double consultaMedica, double medicina, double seguro, double ocio) {
         this.colegiaturas = colegiaturas;
-        this.comida = comida;
         this.consultaMedica = consultaMedica;
         this.medicina = medicina;
         this.seguro = seguro;
@@ -27,20 +24,12 @@ public class serviciosGenerales{
     }
 
 
-    public int getColegiaturas() {
+    public double getColegiaturas() {
         return this.colegiaturas;
     }
 
-    public void setColegiaturas(int colegiaturas) {
+    public void setColegiaturas(double colegiaturas) {
         this.colegiaturas = colegiaturas;
-    }
-
-    public double getComida() {
-        return this.comida;
-    }
-
-    public void setComida(double comida) {
-        this.comida = comida;
     }
 
     public double getConsultaMedica() {

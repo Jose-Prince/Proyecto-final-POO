@@ -7,6 +7,7 @@ public class Usuario{
     private long dpi;
     private boolean estadoLaboral;
     private double salario;
+    private double dinAyuPersona;
     private Automovil vehiculo;
     private Vivienda casa;
     private serviciosGenerales servicio;
@@ -21,6 +22,7 @@ public class Usuario{
         dpi = 0;
         estadoLaboral = false;
         salario = 0;
+        dinAyuPersona = 0;
     }
 //-------------------------------------------------------------------------------------------
 
@@ -28,13 +30,14 @@ public class Usuario{
 //----------------------------- Constructor using all fields --------------------------------
 
     public Usuario(String nombre, int edad, String sexo, long dpi, boolean estadoLaboral, 
-    double salario, Automovil vehiculo, Vivienda casa, serviciosGenerales servicio){
+    double salario, double dinAyuPersona , Automovil vehiculo, Vivienda casa, serviciosGenerales servicio){
          this.nombre = nombre;
          this.edad = edad;
          this.sexo = sexo;
          this.dpi = dpi;
          this.estadoLaboral = estadoLaboral;
          this.salario = salario;
+         this.dinAyuPersona = dinAyuPersona;
          this.vehiculo = vehiculo;
          this.casa = casa;
          this.servicio = servicio;
@@ -97,6 +100,16 @@ public class Usuario{
         this.salario = salario;
     }
 
+
+    public double getDinAyuPersona() {
+        return this.dinAyuPersona;
+    }
+
+    public void setDinAyuPersona(double dinAyuPersona) {
+        this.dinAyuPersona = dinAyuPersona;
+    }
+
+
     public Automovil getVehiculo() {
         return this.vehiculo;
     }
@@ -134,8 +147,8 @@ public class Usuario{
         Vivienda hogar = new Vivienda(habitantes, comida, alquiler, gastoDomicilio);
     }
 
-    public void servicios(int colegiaturas, double comida, double consultaMedica, double medicina, double seguro, double ocio){
-        serviciosGenerales gastos = new serviciosGenerales(colegiaturas, comida, consultaMedica, medicina, seguro, ocio);
+    public void servicios(int colegiaturas, double consultaMedica, double medicina, double seguro, double ocio){
+        serviciosGenerales gastos = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio);
     }
 
 //-------------------------------------------------------------------------------------------
@@ -151,10 +164,11 @@ public class Usuario{
             ", sexo='" + getSexo() + "'" +
             ", dpi='" + getDpi() + "'" +
             ", estadoLaboral='" + isEstadoLaboral() + "'" +
-            ", salario='" + getSalario() + "'" +
+            ", salario='" + getSalario() + "'" + 
+            ", dinAyuPersona=" + getDinAyuPersona() +
             ", vehiculo='" + getVehiculo() + "'" +
             ", casa='" + getCasa() + "'" +
-            ", servicio='" + getServicio() + "'" +
+            ", servicio='" + getServicio() + "'" + 
             "}";
     }
 
