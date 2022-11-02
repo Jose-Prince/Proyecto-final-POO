@@ -85,8 +85,9 @@ public class Principal {
 
                     if (rpa.equalsIgnoreCase("si")) {
                         estadoLaboral = true;
-                        System.out.println("por favor ingrese su salario");
+                        System.out.println("Por favor, ingrese su salario:");
                         salario = teclado.nextFloat();
+                        teclado.nextLine();
                     }
 
                     decision = true;
@@ -103,12 +104,14 @@ public class Principal {
                             System.out.println("¿Cuál es la línea de su carro?");
                             linea = teclado.nextInt();
                             teclado.nextLine();
-                            System.out.println("¿Cuánto es el gasto en gasolina?");
+                            System.out.println("¿Cuánto es el gasto mensual en gasolina?");
                             gastoGasolina = teclado.nextFloat();
                             teclado.nextLine();
+                            decision = false;
                         } else if (rpa.equalsIgnoreCase("no")) {
                             boolean tenerVehiculo = false;
                             gastoGasolina = 0;
+                            decision = false;
                         }
                     }
                     Automovil carro = new Automovil(marca, linea, modelo, gastoGasolina);
@@ -145,12 +148,14 @@ public class Principal {
                     break;
                 }
                 case 2:{
-                    System.out.println("segun el salario ingresado, se concluye que:");
-                    System.out.println("//aquí iría el resultado");
+                    //System.out.println("segun el salario ingresado, se concluye que:");
+                    //System.out.println("//aquí iría el resultado");
+                    comparador.compararSalario();
 
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
+                    teclado.nextLine();
                     break;
                 }
                 case 3:{
@@ -160,6 +165,7 @@ public class Principal {
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
+                    teclado.nextLine();
                     break;
                 }
                 case 4:{
@@ -173,6 +179,7 @@ public class Principal {
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
+                    teclado.nextLine();
                     break;
                 }
                 case 5:{
@@ -182,6 +189,7 @@ public class Principal {
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
+                    teclado.nextLine();
                     break;
                 }
                 case 6:{
@@ -191,6 +199,7 @@ public class Principal {
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
+                    teclado.nextLine();
                     break;
                 }
                 case 7:{
@@ -200,6 +209,7 @@ public class Principal {
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
+                    teclado.nextLine();
                     break;
                 }
                 case 8:{
@@ -210,6 +220,7 @@ public class Principal {
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
+                    teclado.nextLine();
                     break;
                 }
             }

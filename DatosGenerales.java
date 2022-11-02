@@ -3,7 +3,7 @@
 
 
 public class DatosGenerales {
-    private int salarioBase;
+    private double salarioBase;
     private int PrecioCanBas;
     private double promGastoGasolina;
     private double gastoMedico;
@@ -11,8 +11,8 @@ public class DatosGenerales {
 
 
     public DatosGenerales(){
-        salarioBase = 0;
-        PrecioCanBas = 0;
+        salarioBase = 1403.2;
+        PrecioCanBas = 3218;
         promGastoGasolina = 0;
         gastoMedico = 0;
         viviendaGeneral = 0;
@@ -27,11 +27,11 @@ public class DatosGenerales {
     }
 
 
-    public int getSalarioBase() {
+    public double getSalarioBase() {
         return this.salarioBase;
     }
 
-    public void setSalarioBase(int salarioBase) {
+    public void setSalarioBase(double salarioBase) {
         this.salarioBase = salarioBase;
     }
 

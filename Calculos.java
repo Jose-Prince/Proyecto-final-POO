@@ -2,20 +2,20 @@ import java.util.ArrayList;
 
 public class Calculos {
 
-private ArrayList <Usuario> usuario;
+private ArrayList <Usuario> usuarios;
 private DatosGenerales datos;
 
 public Calculos(){
-    usuario = new ArrayList<Usuario>();
+    usuarios = new ArrayList<Usuario>();
     datos = new DatosGenerales();
 }
 
     public ArrayList<Usuario> getUsuario() {
-        return this.usuario;
+        return this.usuarios;
     }
 
     public void setUsuario(ArrayList<Usuario> usuario) {
-        this.usuario = usuario;
+        this.usuarios = usuario;
     }
 
     public DatosGenerales getDatos() {
@@ -29,7 +29,31 @@ public Calculos(){
     public void agregarUsuario(String nombre, int edad, String sexo, long dpi, boolean estadoLaboral, 
     double salario, double dinAyuPersona, Automovil vehiculo, Vivienda casa, serviciosGenerales servicio){
         Usuario nuevoUsuario = new Usuario(nombre, edad, sexo, dpi, estadoLaboral, salario, dinAyuPersona, vehiculo, casa, servicio);
-        usuario.add(nuevoUsuario);
+        usuarios.add(nuevoUsuario);
+        System.out.println("Usuario agregado");
+    }
+
+    public String compararSalario() {
+        String compSalario = "";
+        for (Usuario usuario : usuarios) {
+            int comparacion = (int) Math.abs(((usuario.getSalario()-datos.getSalarioBase())/datos.getSalarioBase())*100);
+            if (usuario.getSalario() < datos.getSalarioBase()){
+                compSalario = "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
+                "no excede el salario base establecido en Guatemala. \nUsted excede este salario en un " + comparacion + 
+                "%.";
+            } else if (usuario.getSalario() > datos.getSalarioBase()){
+                compSalario =  "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
+                "excede el salario base establecido en Guatemala. \nUsted no excede este salario en un " + comparacion + 
+                "%.";
+            } else {
+                compSalario =  "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
+                "es igual al salario base establecido en Guatemala.";
+            }
+        }
+        return compSalario;
+    }
+    public void comparar(){
+        System.out.println("Aparece por favor");
     }
 }
 
