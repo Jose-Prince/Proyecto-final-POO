@@ -7,7 +7,7 @@ public class Principal {
     public static void main(String[] args) {
         Calculos comparador = new Calculos();
         Scanner teclado = new Scanner(System.in);
-        String menu = "1. Comparación Salario\n2. Calcular canasta básica\n3. Comprobar hijos\n4. Ingresar sector laboral\n5. Ingresar gastos compartidos\n6. Comprobar automovil \n7. Ingresar gasto mensual \n8. Indicar tipo de alojamiento \n9. Salir";
+        String menu = "1. Agregar usuario\n2. Comparación Salario\n3. Calcular canasta básica\n4. Ingresar sector laboral\n5. Comprobar automovil \n7. Ingresar gasto mensual \n8. Indicar tipo de alojamiento \n9. Salir";
         int opcion = 1;
         
         System.out.println(menu);
@@ -148,8 +148,6 @@ public class Principal {
                     break;
                 }
                 case 2:{
-                    //System.out.println("segun el salario ingresado, se concluye que:");
-                    //System.out.println("//aquí iría el resultado");
                     comparador.compararSalario();
 
                     System.out.println(menu);

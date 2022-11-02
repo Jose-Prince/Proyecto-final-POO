@@ -33,27 +33,42 @@ public Calculos(){
         System.out.println("Usuario agregado");
     }
 
-    public String compararSalario() {
+    public void compararSalario() {
         String compSalario = "";
         for (Usuario usuario : usuarios) {
-            int comparacion = (int) Math.abs(((usuario.getSalario()-datos.getSalarioBase())/datos.getSalarioBase())*100);
+            int comparacion = (int) (Math.abs(usuario.getSalario()-datos.getSalarioBase())/datos.getSalarioBase())*100;
             if (usuario.getSalario() < datos.getSalarioBase()){
                 compSalario = "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
-                "no excede el salario base establecido en Guatemala. \nUsted excede este salario en un " + comparacion + 
+                "no excede el salario base establecido en Guatemala. \nUsted no excede este salario en un " + comparacion + 
                 "%.";
             } else if (usuario.getSalario() > datos.getSalarioBase()){
                 compSalario =  "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
-                "excede el salario base establecido en Guatemala. \nUsted no excede este salario en un " + comparacion + 
+                ", se excede el salario base establecido en Guatemala. \nUsted excede este salario en un " + comparacion + 
                 "%.";
             } else {
                 compSalario =  "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
                 "es igual al salario base establecido en Guatemala.";
             }
         }
-        return compSalario;
+        System.out.println(compSalario);
     }
-    public void comparar(){
-        System.out.println("Aparece por favor");
+
+    public void compararCanastaBasica(){
+        String compCanastaBas = "";
+        for (Usuario usuario : usuarios) {
+            double canastaSalario = Math.abs(usuario.getSalario()-datos.getPrecioCanBas());
+            if (usuario.getSalario() >= datos.getPrecioCanBas()){
+                compCanastaBas = "Con su salario satisface exitosamente el precio de la canasta básica de Guatemala." +  
+                "Se ve que entre su salario y la canasta básica hay una diferencia de Q. " + canastaSalario + "." +
+                "Esto demuestra que su salario es capaz de satisfacer la canasta básica para una persona.";
+            } else {
+
+            }
+        }
+    }
+
+    public void sectorLaboral(){
+
     }
 }
 
