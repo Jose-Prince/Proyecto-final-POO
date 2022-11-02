@@ -62,13 +62,28 @@ public Calculos(){
                 "Se ve que entre su salario y la canasta básica hay una diferencia de Q. " + canastaSalario + "." +
                 "Esto demuestra que su salario es capaz de satisfacer la canasta básica para una persona.";
             } else {
-
+                compCanastaBas = "Con su salario no logra satisfacer el precio de la canasta básica de Guatemala." +  
+                "Se ve que entre su salario y la canasta básica hay una diferencia de Q. " + canastaSalario + "." +
+                "Esto demuestra que su salario no le alcanza ni para satisfacer la canasta básica para una persona.";
             }
         }
     }
 
     public void sectorLaboral(){
 
+    }
+
+    public double capitalTotal(){
+        double capital = 0;
+        for (Usuario usuario : usuarios) {
+            capital = usuario.getDinAyuPersona() + usuario.getSalario();
+        }
+        return capital;
+    }
+
+    public void gastosCompartidos(){
+        String gastoCompartido = "Con la ayuda financiera recibida, se tiene un capital total de Q." + capitalTotal();
+        System.out.println(gastoCompartido);
     }
 }
 

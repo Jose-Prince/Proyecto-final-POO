@@ -7,7 +7,7 @@ public class Principal {
     public static void main(String[] args) {
         Calculos comparador = new Calculos();
         Scanner teclado = new Scanner(System.in);
-        String menu = "1. Agregar usuario\n2. Comparación Salario\n3. Calcular canasta básica\n4. Ingresar sector laboral\n5. Comprobar automovil \n7. Ingresar gasto mensual \n8. Indicar tipo de alojamiento \n9. Salir";
+        String menu = "1. Agregar usuario\n2. Comparación Salario\n3. Calcular canasta básica\n4. Ingresar sector laboral\n5. Gasto compratido \n7. Ingresar gasto mensual \n8. Indicar tipo de alojamiento \n9. Salir";
         int opcion = 1;
         
         System.out.println(menu);
@@ -157,8 +157,7 @@ public class Principal {
                     break;
                 }
                 case 3:{
-                    System.out.println("Teniendo en cuenta la situación familar:");
-                    System.out.println("//aquí iría el resultado que varia si tiene o no hijos y cuantos");
+                    comparador.compararCanastaBasica();
 
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
@@ -181,9 +180,8 @@ public class Principal {
                     break;
                 }
                 case 5:{
-                    System.out.println("En el caso de tener gastos compartidos, ingresar el monto con el que se le apoya, de lo contrario ingresar como 0");
-                    int compartidos = teclado.nextInt();
-                    teclado.nextLine();
+                    comparador.gastosCompartidos();
+                    
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
