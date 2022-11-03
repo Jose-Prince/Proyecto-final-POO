@@ -114,6 +114,23 @@ public Calculos(){
             }
         }
     }
+
+    public void viviendaGasto(int numPlazos){
+        for (Usuario usuario : usuarios) {
+            Vivienda estadoVivienda = usuario.getCasa();
+            if (estadoVivienda.getAlquiler() == true){
+                System.out.println("Actualmente vive en una vivienda con alquiler, en donde el alquiler es de Q." + estadoVivienda.getGastoDomicilio() +
+                ".\nEs recomendable que trate de conseguir una vivienda propia para no tener que depender del alquiler, además que \na largo plazo una propiedad propia conlleva menos gastos que pagando un alquiler por alojamiento.");
+            } else {
+                System.out.println("Actualmente tiene una casa propia.");
+                if (numPlazos > 0){
+                    System.out.print("Faltan por pagar un total de  " + numPlazos + " y  cada plaza asciende a un total de Q." + estadoVivienda.getGastoDomicilio() +", es recomendable que siempre trate de tener \nen cuenta esta pago para no acumular plazos atrasados.");
+                } else {
+                    System.out.print(" Y no tiene plazos por lo que no se debe preocupar por posibles plazos pendientes.");
+                }
+            }
+        }
+    }
 }
 
 

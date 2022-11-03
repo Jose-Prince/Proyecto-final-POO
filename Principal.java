@@ -9,6 +9,7 @@ public class Principal {
         Scanner teclado = new Scanner(System.in);
         String menu = "1. Agregar usuario\n2. Comparación Salario\n3. Calcular canasta básica\n4. Ingresar sector laboral\n5. Gasto compratido \n7. Ingresar gasto mensual \n8. Indicar tipo de alojamiento \n9. Salir";
         int opcion = 1;
+        boolean alquiler = false;
         
         System.out.println(menu);
 
@@ -24,7 +25,7 @@ public class Principal {
                     int edad, hab, linea = 0;
                     double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0, higiene = 0;
                     long dpi;
-                    boolean alquiler = false, estadoLaboral;
+                    boolean estadoLaboral;
 
                     System.out.println("Ingrese su nombre:");
                     nombre = teclado.nextLine();
@@ -212,8 +213,13 @@ public class Principal {
                     break;
                 }
                 case 8:{
-                    System.out.println("ingrese el tipo de alojamiento que tiene (1) alquiler (2)propiedad propia");
-                    int Vivienda = teclado.nextInt();
+                    int numPlazos = 0;
+                    if (alquiler == true){
+                        System.out.println("¿Cuántos plazos quedana pagar pagar por completo la vivienda?");
+                        numPlazos = teclado.nextInt();
+                        teclado.nextLine();
+                    }
+                    comparador.viviendaGasto(numPlazos);
                     //ciclo para segun la decició ingresar el monto de la propiedad y su cantidad de meses por pagar y monto, asi mismo para la renta
                     teclado.nextLine();
                     System.out.println(menu);
