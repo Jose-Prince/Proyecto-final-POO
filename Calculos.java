@@ -85,6 +85,35 @@ public Calculos(){
         String gastoCompartido = "Con la ayuda financiera recibida, se tiene un capital total de Q." + capitalTotal();
         System.out.println(gastoCompartido);
     }
+
+    public double servicios(){
+        double total = 0;
+        for (Usuario usuario : usuarios) {
+            serviciosGenerales servicios = usuario.getServicio();
+            total = servicios.getConsultaMedica() + servicios.getHigiene() + servicios.getMedicina() + servicios.getOcio();
+        }
+        return total;
+    }
+
+    public void serviciosTotales() {
+        for (Usuario usuario : usuarios) {
+            int porcentajeServicios = (int) (Math.abs(servicios() - usuario.getSalario())/usuario.getSalario())*100;
+            System.out.println("En total se tienen gastos de Q." + servicios() + " por higiene, gastos médicos y ocio.");
+
+            if (usuario.getSalario() >= servicios()){
+                System.out.println("\nEsto representa un " + porcentajeServicios + "% de su salario.");
+                if (servicios() >= 50){
+                    System.out.println("Se recomienda que trate de disminuir alguno de estos gastos si es posible porque\n" +
+                    "Consumen gran parte de su salario");
+                } else {
+                    System.out.println("Trate de mantenar sus gastos por esta cantidad, ya que no forma gran parte de su salario");
+                }
+            } else {
+                System.out.println("por favor disminuya lo antes que pueda estos gastos porque representan un riesgo para su vida.\n"
+                + "Estos gastos exceden su salario actual en un " + servicios() + "%. De seguir con estos gastos tan altos puede\n llegar a tener problemas financieros a futuro.");
+            }
+        }
+    }
 }
 
 

@@ -22,7 +22,7 @@ public class Principal {
                 case 1: {
                     String nombre, sexo, marca = "", modelo = "";
                     int edad, hab, linea = 0;
-                    double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0;
+                    double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0, higiene = 0;
                     long dpi;
                     boolean alquiler = false, estadoLaboral;
 
@@ -136,7 +136,11 @@ public class Principal {
                     ocio = teclado.nextDouble();
                     teclado.nextLine();
 
-                    serviciosGenerales servicios = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio);
+                    System.out.println("¿Cuánto es su gasto promedio en higiene personal?");
+                    higiene = teclado.nextDouble();
+                    teclado.nextLine();
+
+                    serviciosGenerales servicios = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio, higiene);
 
                     comparador.agregarUsuario(nombre, edad, sexo, dpi, estadoLaboral, salario, dinAyuPersona, carro, casa, servicios);
 
@@ -199,9 +203,8 @@ public class Principal {
                     break;
                 }
                 case 7:{
-                    System.out.println("ingrese sus gastos mensuales");
-                    int gastos = teclado.nextInt();
-                    teclado.nextLine();
+                    comparador.serviciosTotales();
+                    
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();

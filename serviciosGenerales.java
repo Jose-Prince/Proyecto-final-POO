@@ -4,6 +4,7 @@ public class serviciosGenerales{
     private double medicina;
     private double seguro;
     private double ocio;
+    private double higiene;
 
 
     public serviciosGenerales() {
@@ -12,15 +13,17 @@ public class serviciosGenerales{
         medicina = 0;
         seguro = 0;
         ocio = 0;    
+        higiene = 0;
     }
 
 
-    public serviciosGenerales(double colegiaturas, double consultaMedica, double medicina, double seguro, double ocio) {
+    public serviciosGenerales(double colegiaturas, double consultaMedica, double medicina, double seguro, double ocio, double higiene) {
         this.colegiaturas = colegiaturas;
         this.consultaMedica = consultaMedica;
         this.medicina = medicina;
         this.seguro = seguro;
         this.ocio = ocio;
+        this.higiene = higiene;
     }
 
 
@@ -63,6 +66,15 @@ public class serviciosGenerales{
     public void setOcio(double ocio) {
         this.ocio = ocio;
     }
+
+    public double getHigiene() {
+        return this.higiene;
+    }
+
+    public void setHigiene(double higiene) {
+        this.higiene = higiene;
+    }
+
 
 
 }

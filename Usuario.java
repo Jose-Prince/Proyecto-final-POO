@@ -147,8 +147,8 @@ public class Usuario{
         Vivienda hogar = new Vivienda(habitantes, comida, alquiler, gastoDomicilio);
     }
 
-    public void servicios(int colegiaturas, double consultaMedica, double medicina, double seguro, double ocio){
-        serviciosGenerales gastos = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio);
+    public void servicios(int colegiaturas, double consultaMedica, double medicina, double seguro, double ocio, double higiene){
+        serviciosGenerales gastos = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio, higiene);
     }
 
 //-------------------------------------------------------------------------------------------
