@@ -5,6 +5,7 @@ public class serviciosGenerales{
     private double seguro;
     private double ocio;
     private double higiene;
+    private double gastoTransporte;
 
 
     public serviciosGenerales() {
@@ -14,16 +15,18 @@ public class serviciosGenerales{
         seguro = 0;
         ocio = 0;    
         higiene = 0;
+        gastoTransporte = 0;
     }
 
 
-    public serviciosGenerales(double colegiaturas, double consultaMedica, double medicina, double seguro, double ocio, double higiene) {
+    public serviciosGenerales(double colegiaturas, double consultaMedica, double medicina, double seguro, double ocio, double higiene, double gastoTransporte) {
         this.colegiaturas = colegiaturas;
         this.consultaMedica = consultaMedica;
         this.medicina = medicina;
         this.seguro = seguro;
         this.ocio = ocio;
         this.higiene = higiene;
+        this.gastoTransporte = gastoTransporte;
     }
 
 
@@ -76,5 +79,12 @@ public class serviciosGenerales{
     }
 
 
+    public double getGastoTransporte() {
+        return this.gastoTransporte;
+    }
+
+    public void setGastoTransporte(double gastoTransporte) {
+        this.gastoTransporte = gastoTransporte;
+    }
 
 }

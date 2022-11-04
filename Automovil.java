@@ -3,6 +3,7 @@ public class Automovil {
     private int modelo;
     private String linea;
     private double gastoGasolina;
+    private boolean tenerVehiculo;
     
 
     public Automovil() {
@@ -10,14 +11,16 @@ public class Automovil {
         modelo = 0;
         linea = "";
         gastoGasolina = 0;
+        tenerVehiculo = true;
     }
 
 
-    public Automovil(String marca, int modelo, String linea, double gastoGasolina) {
+    public Automovil(String marca, int modelo, String linea, double gastoGasolina, boolean tenerVehiculo) {
         this.marca = marca;
         this.modelo = modelo;
         this.linea = linea;
         this.gastoGasolina = gastoGasolina;
+        this.tenerVehiculo = tenerVehiculo;
     }
 
 
@@ -52,5 +55,19 @@ public class Automovil {
     public void setGastoGasolina(double gastoGasolina) {
         this.gastoGasolina = gastoGasolina;
     }
+
+
+    public boolean isTenerVehiculo() {
+        return this.tenerVehiculo;
+    }
+
+    public boolean getTenerVehiculo() {
+        return this.tenerVehiculo;
+    }
+
+    public void setTenerVehiculo(boolean tenerVehiculo) {
+        this.tenerVehiculo = tenerVehiculo;
+    }
+
 
 }

@@ -23,9 +23,9 @@ public class Principal {
                 case 1: {
                     String nombre, sexo, marca = "", modelo = "";
                     int edad, hab, linea = 0;
-                    double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0, higiene = 0;
+                    double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0, higiene = 0, gastoTransporte = 0;
                     long dpi;
-                    boolean estadoLaboral;
+                    boolean estadoLaboral, tenerVehiculo = true;
 
                     System.out.println("Ingrese su nombre:");
                     nombre = teclado.nextLine();
@@ -110,12 +110,12 @@ public class Principal {
                             teclado.nextLine();
                             decision = false;
                         } else if (rpa.equalsIgnoreCase("no")) {
-                            boolean tenerVehiculo = false;
+                            tenerVehiculo = false;
                             gastoGasolina = 0;
                             decision = false;
                         }
                     }
-                    Automovil carro = new Automovil(marca, linea, modelo, gastoGasolina);
+                    Automovil carro = new Automovil(marca, linea, modelo, gastoGasolina,tenerVehiculo);
 
                     System.out.println("¿Cuánto es el gasto en el sector educativo? (Indique 0 si no aplica)");
                     colegiaturas = teclado.nextDouble();
@@ -141,7 +141,11 @@ public class Principal {
                     higiene = teclado.nextDouble();
                     teclado.nextLine();
 
-                    serviciosGenerales servicios = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio, higiene);
+                    System.out.println("¿Cuánto es su gasto en medios de transporte públicos?");
+                    gastoTransporte = teclado.nextDouble();
+                    teclado.nextLine();
+
+                    serviciosGenerales servicios = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio, higiene,gastoTransporte);
 
                     comparador.agregarUsuario(nombre, edad, sexo, dpi, estadoLaboral, salario, dinAyuPersona, carro, casa, servicios);
 
@@ -194,9 +198,8 @@ public class Principal {
                     break;
                 }
                 case 6:{
-                    System.out.println("En el caso de contar con un automovil, ingresar el monto que se gasta en gasolina, de lo contrario ingresar como 0");
-                    int gasolina = teclado.nextInt();
-                    teclado.nextLine();
+                    comparador.carroGastos();
+                    
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
@@ -221,7 +224,7 @@ public class Principal {
                     }
                     comparador.viviendaGasto(numPlazos);
                     //ciclo para segun la decició ingresar el monto de la propiedad y su cantidad de meses por pagar y monto, asi mismo para la renta
-                    teclado.nextLine();
+    
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();

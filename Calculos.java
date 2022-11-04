@@ -131,6 +131,33 @@ public Calculos(){
             }
         }
     }
+
+    public void carroGastos(){
+        for (Usuario usuario : usuarios) {
+            Automovil carro = usuario.getVehiculo();
+            serviciosGenerales datos = usuario.getServicio();
+            boolean pertenencia = carro.getTenerVehiculo();
+            int comparaGastoTransporte = (int) ((Math.abs(capitalTotal()-datos.getGastoTransporte())/capitalTotal())*100);
+            int compararGastosTotalTransporte = (int) ((Math.abs(capitalTotal()-(datos.getGastoTransporte()+carro.getGastoGasolina()))/capitalTotal())*100);
+            if (pertenencia == true){
+                System.out.println("Sus gastos de gasolinas sumados con los gastos de transportes son de Q." + (carro.getGastoGasolina() + datos.getGastoTransporte()) + 
+                "Estos representan un " + compararGastosTotalTransporte + "% del capital total.");
+                if (compararGastosTotalTransporte >= 50){
+                    System.out.println("Se recomienda que empieze a administrar mejor sus gastos en este ámbito \nporque esta gastando una gran parte de su capital en este apartado. Lo mejor seria disminuir cuanto se gasta en gasolina\ny disminuir el uso de transporte público, si es que se usa.");
+                } else {
+                    System.out.println("Esta administrando bastante bien sus gastos en lo que respecta al consumo \nde gasolina y el uso de transporte público ya que este gasto no es significativo a comparación de su capital total.");
+                }
+            } else {
+                System.out.println("No existen gastos en gasolina pero se tiene que se gastan Q." + datos.getGastoTransporte()+ "en transportes. \nEste gasto representa el " + comparaGastoTransporte +
+                "%, de su capital total.");
+                if (datos.getGastoTransporte() >= 50){
+                    System.out.println("Trate de buscar medios de transportes más económicos, debido a que sus gastos en este ámbito están siendo demasiados gransdes\npara el capital se tiene disponible.");
+                } else {
+                    System.out.println("Su nivel de gasto entransportes no es excesivo y se mantiene en un buen porcentaje con respecto al capital total.");
+                }
+            }
+        }
+    }
 }
 
 
