@@ -36,7 +36,7 @@ public Calculos(){
     public void compararSalario() {
         String compSalario = "";
         for (Usuario usuario : usuarios) {
-            int comparacion = (int) (Math.abs(usuario.getSalario()-datos.getSalarioBase())/datos.getSalarioBase())*100;
+            int comparacion = (int) ((datos.getSalarioBase())/datos.getSalarioBase())*100;
             if (usuario.getSalario() < datos.getSalarioBase()){
                 compSalario = "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
                 "no excede el salario base establecido en Guatemala. \nUsted no excede este salario en un " + comparacion + 
@@ -97,20 +97,21 @@ public Calculos(){
 
     public void serviciosTotales() {
         for (Usuario usuario : usuarios) {
-            int porcentajeServicios = (int) (Math.abs(servicios() - usuario.getSalario())/usuario.getSalario())*100;
-            System.out.println("En total se tienen gastos de Q." + servicios() + " por higiene, gastos médicos y ocio.");
+            double servicio = servicios();
+            int porcentajeServicios = (int) (servicio/usuario.getSalario())*100;
+            System.out.println("En total se tienen gastos de Q." + servicio + " por higiene, gastos médicos y ocio.");
 
             if (usuario.getSalario() >= servicios()){
                 System.out.println("\nEsto representa un " + porcentajeServicios + "% de su salario.");
-                if (servicios() >= 50){
+                if (porcentajeServicios >= 50){
                     System.out.println("Se recomienda que trate de disminuir alguno de estos gastos si es posible porque\n" +
                     "Consumen gran parte de su salario");
+                    System.out.println("por favor disminuya lo antes que pueda estos gastos porque representan un riesgo para su vida.\n"
+                    + ". De seguir con estos gastos tan altos puede\n llegar a tener problemas financieros a futuro.");
                 } else {
-                    System.out.println("Trate de mantenar sus gastos por esta cantidad, ya que no forma gran parte de su salario");
+                    
+                System.out.println("Trate de mantenar sus gastos por esta cantidad, ya que no forma gran parte de su salario");
                 }
-            } else {
-                System.out.println("por favor disminuya lo antes que pueda estos gastos porque representan un riesgo para su vida.\n"
-                + "Estos gastos exceden su salario actual en un " + servicios() + "%. De seguir con estos gastos tan altos puede\n llegar a tener problemas financieros a futuro.");
             }
         }
     }
@@ -137,8 +138,8 @@ public Calculos(){
             Automovil carro = usuario.getVehiculo();
             serviciosGenerales datos = usuario.getServicio();
             boolean pertenencia = carro.getTenerVehiculo();
-            int comparaGastoTransporte = (int) ((Math.abs(capitalTotal()-datos.getGastoTransporte())/capitalTotal())*100);
-            int compararGastosTotalTransporte = (int) ((Math.abs(capitalTotal()-(datos.getGastoTransporte()+carro.getGastoGasolina()))/capitalTotal())*100);
+            int comparaGastoTransporte = (int) ((datos.getGastoTransporte()/capitalTotal())*100);
+            int compararGastosTotalTransporte = (int) (((datos.getGastoTransporte()+carro.getGastoGasolina())/capitalTotal())*100);
             if (pertenencia == true){
                 System.out.println("Sus gastos de gasolinas sumados con los gastos de transportes son de Q." + (carro.getGastoGasolina() + datos.getGastoTransporte()) + 
                 "Estos representan un " + compararGastosTotalTransporte + "% del capital total.");
@@ -150,7 +151,7 @@ public Calculos(){
             } else {
                 System.out.println("No existen gastos en gasolina pero se tiene que se gastan Q." + datos.getGastoTransporte()+ "en transportes. \nEste gasto representa el " + comparaGastoTransporte +
                 "%, de su capital total.");
-                if (datos.getGastoTransporte() >= 50){
+                if (compararGastosTotalTransporte >= 50){
                     System.out.println("Trate de buscar medios de transportes más económicos, debido a que sus gastos en este ámbito están siendo demasiados gransdes\npara el capital se tiene disponible.");
                 } else {
                     System.out.println("Su nivel de gasto entransportes no es excesivo y se mantiene en un buen porcentaje con respecto al capital total.");

@@ -1,13 +1,10 @@
-//public class Principal {
-
-//}
 import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
         Calculos comparador = new Calculos();
         Scanner teclado = new Scanner(System.in);
-        String menu = "1. Agregar usuario\n2. Comparación Salario\n3. Calcular canasta básica\n4. Ingresar sector laboral\n5. Gasto compratido \n7. Ingresar gasto mensual \n8. Indicar tipo de alojamiento \n9. Salir";
+        String menu = "1. Agregar usuario\n2. Comparación Salario\n3. Calcular canasta básica\n4. Ingresar sector laboral\n5. Gasto compratido\n6. Gastos en vehículo \n7. Gastos realizados en servicios \n8. Gastos en vivienda \n9. Salir";
         int opcion = 1;
         boolean alquiler = false;
         
@@ -20,7 +17,7 @@ public class Principal {
 
         while (opcion<9 && opcion>=1){
             switch (opcion){
-                case 1: {
+                case 3: {
                     String nombre, sexo, marca = "", modelo = "";
                     int edad, hab, linea = 0;
                     double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0, higiene = 0, gastoTransporte = 0;
@@ -165,8 +162,9 @@ public class Principal {
                     teclado.nextLine();
                     break;
                 }
-                case 3:{
+                case 1:{
                     comparador.compararCanastaBasica();
+                    System.out.println("hola");
 
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
@@ -217,7 +215,7 @@ public class Principal {
                 }
                 case 8:{
                     int numPlazos = 0;
-                    if (alquiler == true){
+                    if (alquiler == false){
                         System.out.println("¿Cuántos plazos quedana pagar pagar por completo la vivienda?");
                         numPlazos = teclado.nextInt();
                         teclado.nextLine();
@@ -225,7 +223,7 @@ public class Principal {
                     comparador.viviendaGasto(numPlazos);
                     //ciclo para segun la decició ingresar el monto de la propiedad y su cantidad de meses por pagar y monto, asi mismo para la renta
     
-                    System.out.println(menu);
+                    System.out.println("\n" + menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
                     teclado.nextLine();
