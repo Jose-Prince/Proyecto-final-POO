@@ -17,7 +17,7 @@ public class Principal {
 
         while (opcion<9 && opcion>=1){
             switch (opcion){
-                case 3: {
+                case 1: {
                     String nombre, sexo, marca = "", modelo = "";
                     int edad, hab, linea = 0;
                     double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0, higiene = 0, gastoTransporte = 0;
@@ -162,9 +162,8 @@ public class Principal {
                     teclado.nextLine();
                     break;
                 }
-                case 1:{
+                case 3:{
                     comparador.compararCanastaBasica();
-                    System.out.println("hola");
 
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");

@@ -36,7 +36,7 @@ public Calculos(){
     public void compararSalario() {
         String compSalario = "";
         for (Usuario usuario : usuarios) {
-            int comparacion = (int) ((datos.getSalarioBase())/datos.getSalarioBase())*100;
+            int comparacion = (int) ((datos.getSalarioBase())/usuario.getSalario())*100;
             if (usuario.getSalario() < datos.getSalarioBase()){
                 compSalario = "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
                 "no excede el salario base establecido en Guatemala. \nUsted no excede este salario en un " + comparacion + 
@@ -109,7 +109,7 @@ public Calculos(){
                     System.out.println("por favor disminuya lo antes que pueda estos gastos porque representan un riesgo para su vida.\n"
                     + ". De seguir con estos gastos tan altos puede\n llegar a tener problemas financieros a futuro.");
                 } else {
-                    
+
                 System.out.println("Trate de mantenar sus gastos por esta cantidad, ya que no forma gran parte de su salario");
                 }
             }
