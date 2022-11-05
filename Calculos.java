@@ -33,7 +33,7 @@ public Calculos(){
         System.out.println("Usuario agregado");
     }
 
-    public void compararSalario() {
+    public String compararSalario() {
         String compSalario = "";
         for (Usuario usuario : usuarios) {
             int comparacion = (int) ((datos.getSalarioBase())/usuario.getSalario())*100;
@@ -50,7 +50,7 @@ public Calculos(){
                 "es igual al salario base establecido en Guatemala.";
             }
         }
-        System.out.println(compSalario);
+        return compSalario;
     }
 
     public void compararCanastaBasica(){
