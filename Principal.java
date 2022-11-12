@@ -1,5 +1,4 @@
 import java.util.Scanner;
-//nuevo mensaje
 
 public class Principal {
     public static void main(String[] args) {
