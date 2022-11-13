@@ -36,7 +36,7 @@ public Calculos(){
     public String compararSalario() {
         String compSalario = "";
         for (Usuario usuario : usuarios) {
-            int comparacion = (int) (datos.getSalarioBase()/usuario.getSalario())*100;
+            int comparacion = (int) ((datos.getSalarioBase()/usuario.getSalario())*100);
             if (usuario.getSalario() < datos.getSalarioBase()){
                 compSalario = "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
                 "no excede el salario base establecido en Guatemala. \nUsted no excede este salario en un " + comparacion + 
@@ -100,7 +100,7 @@ public Calculos(){
         String registroServicio = "";
         for (Usuario usuario : usuarios) {
             double servicio = servicios();
-            int porcentajeServicios = (int) (servicio/usuario.getSalario())*100;
+            int porcentajeServicios = (int) ((servicio/usuario.getSalario())*100);
             registroServicio = "En total se tienen gastos de Q." + servicio + " por higiene, gastos médicos y ocio.";
 
             if (usuario.getSalario() >= servicios()){
