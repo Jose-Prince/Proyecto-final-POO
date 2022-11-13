@@ -36,7 +36,7 @@ public Calculos(){
     public String compararSalario() {
         String compSalario = "";
         for (Usuario usuario : usuarios) {
-            int comparacion = (int) ((datos.getSalarioBase())/usuario.getSalario())*100;
+            int comparacion = (int) (datos.getSalarioBase()/usuario.getSalario())*100;
             if (usuario.getSalario() < datos.getSalarioBase()){
                 compSalario = "Se pudo determinar que en base a su salario actual de Q." + usuario.getSalario() + 
                 "no excede el salario base establecido en Guatemala. \nUsted no excede este salario en un " + comparacion + 
@@ -53,7 +53,7 @@ public Calculos(){
         return compSalario;
     }
 
-    public void compararCanastaBasica(){
+    public String compararCanastaBasica(){
         String compCanastaBas = "";
         for (Usuario usuario : usuarios) {
             double canastaSalario = Math.abs(usuario.getSalario()-datos.getPrecioCanBas());
@@ -67,6 +67,7 @@ public Calculos(){
                 "Esto demuestra que su salario no le alcanza ni para satisfacer la canasta básica para una persona.";
             }
         }
+        return compCanastaBas;
     }
 
     public void sectorLaboral(){
@@ -81,9 +82,9 @@ public Calculos(){
         return capital;
     }
 
-    public void gastosCompartidos(){
+    public String gastosCompartidos(){
         String gastoCompartido = "Con la ayuda financiera recibida, se tiene un capital total de Q." + capitalTotal();
-        System.out.println(gastoCompartido);
+        return gastoCompartido;
     }
 
     public double servicios(){
@@ -95,45 +96,49 @@ public Calculos(){
         return total;
     }
 
-    public void serviciosTotales() {
+    public String serviciosTotales() {
+        String registroServicio = "";
         for (Usuario usuario : usuarios) {
             double servicio = servicios();
             int porcentajeServicios = (int) (servicio/usuario.getSalario())*100;
-            System.out.println("En total se tienen gastos de Q." + servicio + " por higiene, gastos médicos y ocio.");
+            registroServicio = "En total se tienen gastos de Q." + servicio + " por higiene, gastos médicos y ocio.";
 
             if (usuario.getSalario() >= servicios()){
                 System.out.println("\nEsto representa un " + porcentajeServicios + "% de su salario.");
                 if (porcentajeServicios >= 50){
-                    System.out.println("Se recomienda que trate de disminuir alguno de estos gastos si es posible porque\n" +
-                    "Consumen gran parte de su salario");
-                    System.out.println("por favor disminuya lo antes que pueda estos gastos porque representan un riesgo para su vida.\n"
-                    + ". De seguir con estos gastos tan altos puede\n llegar a tener problemas financieros a futuro.");
+                    registroServicio += "Se recomienda que trate de disminuir alguno de estos gastos si es posible porque\n" +
+                    "Consumen gran parte de su salario. por favor disminuya lo antes que pueda estos gastos \nporque representan un riesgo para su vida.\n"
+                    + ". De seguir con estos gastos tan altos puede\n llegar a tener problemas financieros a futuro.";
                 } else {
 
-                System.out.println("Trate de mantenar sus gastos por esta cantidad, ya que no forma gran parte de su salario");
+                registroServicio += "Trate de mantenar sus gastos por esta cantidad, ya que no forma gran parte de su salario";
                 }
             }
         }
+        return registroServicio;
     }
 
-    public void viviendaGasto(int numPlazos){
+    public String viviendaGasto(int numPlazos){
+        String viviendaRegistro = "";
         for (Usuario usuario : usuarios) {
             Vivienda estadoVivienda = usuario.getCasa();
             if (estadoVivienda.getAlquiler() == true){
-                System.out.println("Actualmente vive en una vivienda con alquiler, en donde el alquiler es de Q." + estadoVivienda.getGastoDomicilio() +
-                ".\nEs recomendable que trate de conseguir una vivienda propia para no tener que depender del alquiler, además que \na largo plazo una propiedad propia conlleva menos gastos que pagando un alquiler por alojamiento.");
+                viviendaRegistro += "Actualmente vive en una vivienda con alquiler, en donde el alquiler es de Q." + estadoVivienda.getGastoDomicilio() +
+                ".\nEs recomendable que trate de conseguir una vivienda propia para no tener que depender del alquiler, además que \na largo plazo una propiedad propia conlleva menos gastos que pagando un alquiler por alojamiento.";
             } else {
-                System.out.println("Actualmente tiene una casa propia.");
+                viviendaRegistro += "Actualmente tiene una casa propia.";
                 if (numPlazos > 0){
-                    System.out.print("Faltan por pagar un total de  " + numPlazos + " y  cada plaza asciende a un total de Q." + estadoVivienda.getGastoDomicilio() +", es recomendable que siempre trate de tener \nen cuenta esta pago para no acumular plazos atrasados.");
+                    viviendaRegistro += "Faltan por pagar un total de  " + numPlazos + " y  cada plaza asciende a un total de Q." + estadoVivienda.getGastoDomicilio() +", es recomendable que siempre trate de tener \nen cuenta esta pago para no acumular plazos atrasados.";
                 } else {
-                    System.out.print(" Y no tiene plazos por lo que no se debe preocupar por posibles plazos pendientes.");
+                    viviendaRegistro += " Y no tiene plazos por lo que no se debe preocupar por posibles plazos pendientes.";
                 }
             }
         }
+        return viviendaRegistro;
     }
 
-    public void carroGastos(){
+    public String carroGastos(){
+        String registroCarro = "";
         for (Usuario usuario : usuarios) {
             Automovil carro = usuario.getVehiculo();
             serviciosGenerales datos = usuario.getServicio();
@@ -141,23 +146,24 @@ public Calculos(){
             int comparaGastoTransporte = (int) ((datos.getGastoTransporte()/capitalTotal())*100);
             int compararGastosTotalTransporte = (int) (((datos.getGastoTransporte()+carro.getGastoGasolina())/capitalTotal())*100);
             if (pertenencia == true){
-                System.out.println("Sus gastos de gasolinas sumados con los gastos de transportes son de Q." + (carro.getGastoGasolina() + datos.getGastoTransporte()) + 
-                "Estos representan un " + compararGastosTotalTransporte + "% del capital total.");
+                registroCarro += "Sus gastos de gasolinas sumados con los gastos de transportes son de Q." + (carro.getGastoGasolina() + datos.getGastoTransporte()) + 
+                "Estos representan un " + compararGastosTotalTransporte + "% del capital total.";
                 if (compararGastosTotalTransporte >= 50){
-                    System.out.println("Se recomienda que empieze a administrar mejor sus gastos en este ámbito \nporque esta gastando una gran parte de su capital en este apartado. Lo mejor seria disminuir cuanto se gasta en gasolina\ny disminuir el uso de transporte público, si es que se usa.");
+                    registroCarro += "Se recomienda que empieze a administrar mejor sus gastos en este ámbito \nporque esta gastando una gran parte de su capital en este apartado. Lo mejor seria disminuir cuanto se gasta en gasolina\ny disminuir el uso de transporte público, si es que se usa.";
                 } else {
-                    System.out.println("Esta administrando bastante bien sus gastos en lo que respecta al consumo \nde gasolina y el uso de transporte público ya que este gasto no es significativo a comparación de su capital total.");
+                    registroCarro += "Esta administrando bastante bien sus gastos en lo que respecta al consumo \nde gasolina y el uso de transporte público ya que este gasto no es significativo a comparación de su capital total.";
                 }
             } else {
-                System.out.println("No existen gastos en gasolina pero se tiene que se gastan Q." + datos.getGastoTransporte()+ "en transportes. \nEste gasto representa el " + comparaGastoTransporte +
-                "%, de su capital total.");
+                registroCarro += "No existen gastos en gasolina pero se tiene que se gastan Q." + datos.getGastoTransporte()+ "en transportes. \nEste gasto representa el " + comparaGastoTransporte +
+                "%, de su capital total.";
                 if (compararGastosTotalTransporte >= 50){
-                    System.out.println("Trate de buscar medios de transportes más económicos, debido a que sus gastos en este ámbito están siendo demasiados gransdes\npara el capital se tiene disponible.");
+                    registroCarro += "Trate de buscar medios de transportes más económicos, debido a que sus gastos en este ámbito están siendo demasiados gransdes\npara el capital se tiene disponible.";
                 } else {
-                    System.out.println("Su nivel de gasto entransportes no es excesivo y se mantiene en un buen porcentaje con respecto al capital total.");
+                    registroCarro += "Su nivel de gasto entransportes no es excesivo y se mantiene en un buen porcentaje con respecto al capital total.";
                 }
             }
         }
+        return registroCarro;
     }
 }
 

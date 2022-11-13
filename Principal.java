@@ -154,7 +154,8 @@ public class Principal {
                     break;
                 }
                 case 2:{
-                    comparador.compararSalario();
+                    String salario_registro = comparador.compararSalario();
+                    System.out.println(salario_registro);
 
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
@@ -186,8 +187,9 @@ public class Principal {
                     break;
                 }
                 case 5:{
-                    comparador.gastosCompartidos();
-                    
+                    String gastos_registro = comparador.gastosCompartidos();
+                    System.out.println(gastos_registro);
+
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
@@ -195,8 +197,9 @@ public class Principal {
                     break;
                 }
                 case 6:{
-                    comparador.carroGastos();
-                    
+                    String carro_registro = comparador.carroGastos();
+                    System.out.println(carro_registro);
+
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
                     opcion = teclado.nextInt();
@@ -204,7 +207,8 @@ public class Principal {
                     break;
                 }
                 case 7:{
-                    comparador.serviciosTotales();
+                    String servicio_registro = comparador.serviciosTotales();
+                    System.out.println(servicio_registro);
                     
                     System.out.println(menu);
                     System.out.println("Ingrese la opción que desea: ");
@@ -219,7 +223,8 @@ public class Principal {
                         numPlazos = teclado.nextInt();
                         teclado.nextLine();
                     }
-                    comparador.viviendaGasto(numPlazos);
+                    String vivienda_registro = comparador.viviendaGasto(numPlazos);
+                    System.out.println(vivienda_registro);
                     //ciclo para segun la decició ingresar el monto de la propiedad y su cantidad de meses por pagar y monto, asi mismo para la renta
     
                     System.out.println("\n" + menu);
