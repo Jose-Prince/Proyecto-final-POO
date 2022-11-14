@@ -163,7 +163,7 @@ public Calculos(){
 
     public String crearInforme(String nombre, int edad, String sexo, long dpi, int habitantes, boolean gastoCompartido,
     double aporteDin, double alimentacion, boolean alquiler, double domicilio, boolean trabajo, double salario,
-    boolean vehiculo, String marca, String modelo, int linea, double gasolina, double educacion, 
+    boolean vehiculo, String marca, String modelo, String linea, double gasolina, double educacion, 
     double consultaMedica, double medicina, double ocio, double higiene, double transporte){
         Vivienda casa = new Vivienda(habitantes, alimentacion, alquiler, domicilio);
         Automovil carro = new Automovil(marca, modelo, linea, gasolina,vehiculo);

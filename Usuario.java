@@ -139,7 +139,7 @@ public class Usuario{
 
 //--------------------------------------- Métodos -------------------------------------------
 
-    public void definirCarro(String marca, String modelo, int linea, double gastoGasolina, boolean tenerVehiculo){
+    public void definirCarro(String marca, String modelo, String linea, double gastoGasolina, boolean tenerVehiculo){
         Automovil carro = new Automovil(marca, modelo, linea, gastoGasolina,tenerVehiculo);
     }
 

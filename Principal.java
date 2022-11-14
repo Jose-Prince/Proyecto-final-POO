@@ -18,8 +18,8 @@ public class Principal {
         while (opcion<9 && opcion>=1){
             switch (opcion){
                 case 1: {
-                    String nombre, sexo, marca = "", modelo = "";
-                    int edad, hab, linea = 0;
+                    String nombre, sexo, marca = "", modelo = "", linea = "";
+                    int edad, hab;
                     double salario = 0, dinAyuPersona = 0, comida, gastoDomicilio = 0, gastoGasolina = 0, colegiaturas = 0, consultaMedica = 0, medicina = 0, seguro = 0, ocio = 0, higiene = 0, gastoTransporte = 0;
                     long dpi;
                     boolean estadoLaboral, tenerVehiculo = true;
@@ -100,8 +100,7 @@ public class Principal {
                             System.out.println("¿Cuál es el modelo de su carro?");
                             modelo = teclado.nextLine();
                             System.out.println("¿Cuál es la línea de su carro?");
-                            linea = teclado.nextInt();
-                            teclado.nextLine();
+                            linea = teclado.nextLine();
                             System.out.println("¿Cuánto es el gasto mensual en gasolina?");
                             gastoGasolina = teclado.nextFloat();
                             teclado.nextLine();

@@ -1,6 +1,6 @@
 public class Automovil {
     private String marca;
-    private int linea;
+    private String linea;
     private String modelo;
     private double gastoGasolina;
     private boolean tenerVehiculo;
@@ -9,13 +9,13 @@ public class Automovil {
     public Automovil() {
         marca = "";
         modelo = "";
-        linea = 0;
+        linea = "";
         gastoGasolina = 0;
         tenerVehiculo = true;
     }
 
 
-    public Automovil(String marca, String modelo, int linea, double gastoGasolina, boolean tenerVehiculo) {
+    public Automovil(String marca, String modelo, String linea, double gastoGasolina, boolean tenerVehiculo) {
         this.marca = marca;
         this.modelo = modelo;
         this.linea = linea;
@@ -40,11 +40,11 @@ public class Automovil {
         this.modelo = modelo;
     }
 
-    public int getLinea() {
+    public String getLinea() {
         return this.linea;
     }
 
-    public void setLinea(int linea) {
+    public void setLinea(String linea) {
         this.linea = linea;
     }
 
