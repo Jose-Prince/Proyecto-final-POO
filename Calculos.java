@@ -118,7 +118,7 @@ public Calculos(){
         return registroServicio;
     }
 
-    public String viviendaGasto(int numPlazos){
+    public String viviendaGasto(){
         String viviendaRegistro = "";
         for (Usuario usuario : usuarios) {
             Vivienda estadoVivienda = usuario.getCasa();
@@ -126,12 +126,7 @@ public Calculos(){
                 viviendaRegistro += "Actualmente vive en una vivienda con alquiler, en donde el alquiler es de Q." + estadoVivienda.getGastoDomicilio() +
                 ".\nEs recomendable que trate de conseguir una vivienda propia para no tener que depender del alquiler, además que \na largo plazo una propiedad propia conlleva menos gastos que pagando un alquiler por alojamiento.";
             } else {
-                viviendaRegistro += "Actualmente tiene una casa propia.";
-                if (numPlazos > 0){
-                    viviendaRegistro += "Faltan por pagar un total de  " + numPlazos + " y  cada plaza asciende a un total de Q." + estadoVivienda.getGastoDomicilio() +", es recomendable que siempre trate de tener \nen cuenta esta pago para no acumular plazos atrasados.";
-                } else {
-                    viviendaRegistro += " Y no tiene plazos por lo que no se debe preocupar por posibles plazos pendientes.";
-                }
+                viviendaRegistro += "Actualmente tiene una casa propia. Y se tienen gasto para la propiedad de Q. " + estadoVivienda.getGastoDomicilio() + ".";
             }
         }
         return viviendaRegistro;
@@ -164,6 +159,18 @@ public Calculos(){
             }
         }
         return registroCarro;
+    }
+
+    public String crearInforme(String nombre, int edad, String sexo, long dpi, int habitantes, boolean gastoCompartido,
+    double aporteDin, double alimentacion, boolean alquiler, double domicilio, boolean trabajo, double salario,
+    boolean vehiculo, String marca, String modelo, int linea, double gasolina, double educacion, 
+    double consultaMedica, double medicina, double ocio, double higiene, double transporte){
+        Vivienda casa = new Vivienda(habitantes, alimentacion, alquiler, domicilio);
+        Automovil carro = new Automovil(marca, modelo, linea, gasolina,vehiculo);
+        serviciosGenerales servicios = new serviciosGenerales(educacion, consultaMedica, medicina, ocio, higiene,transporte);
+        agregarUsuario(nombre, edad, sexo, dpi, trabajo, salario, aporteDin, carro, casa, servicios);
+        String informe = compararSalario() + compararCanastaBasica() + gastosCompartidos() + serviciosTotales() + viviendaGasto() + carroGastos();
+        return informe;
     }
 }
 

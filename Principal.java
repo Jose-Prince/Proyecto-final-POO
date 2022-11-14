@@ -112,7 +112,7 @@ public class Principal {
                             decision = false;
                         }
                     }
-                    Automovil carro = new Automovil(marca, linea, modelo, gastoGasolina,tenerVehiculo);
+                    Automovil carro = new Automovil(marca, modelo, linea, gastoGasolina,tenerVehiculo);
 
                     System.out.println("¿Cuánto es el gasto en el sector educativo? (Indique 0 si no aplica)");
                     colegiaturas = teclado.nextDouble();
@@ -142,7 +142,7 @@ public class Principal {
                     gastoTransporte = teclado.nextDouble();
                     teclado.nextLine();
 
-                    serviciosGenerales servicios = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio, higiene,gastoTransporte);
+                    serviciosGenerales servicios = new serviciosGenerales(colegiaturas, consultaMedica, medicina, ocio, higiene, gastoTransporte);
 
                     comparador.agregarUsuario(nombre, edad, sexo, dpi, estadoLaboral, salario, dinAyuPersona, carro, casa, servicios);
 
@@ -217,13 +217,7 @@ public class Principal {
                     break;
                 }
                 case 8:{
-                    int numPlazos = 0;
-                    if (alquiler == false){
-                        System.out.println("¿Cuántos plazos quedana pagar pagar por completo la vivienda?");
-                        numPlazos = teclado.nextInt();
-                        teclado.nextLine();
-                    }
-                    String vivienda_registro = comparador.viviendaGasto(numPlazos);
+                    String vivienda_registro = comparador.viviendaGasto();
                     System.out.println(vivienda_registro);
                     //ciclo para segun la decició ingresar el monto de la propiedad y su cantidad de meses por pagar y monto, asi mismo para la renta
     

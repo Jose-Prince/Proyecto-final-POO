@@ -139,7 +139,7 @@ public class Usuario{
 
 //--------------------------------------- Métodos -------------------------------------------
 
-    public void definirCarro(String marca, int modelo, String linea, double gastoGasolina, boolean tenerVehiculo){
+    public void definirCarro(String marca, String modelo, int linea, double gastoGasolina, boolean tenerVehiculo){
         Automovil carro = new Automovil(marca, modelo, linea, gastoGasolina,tenerVehiculo);
     }
 
@@ -147,8 +147,8 @@ public class Usuario{
         Vivienda hogar = new Vivienda(habitantes, comida, alquiler, gastoDomicilio);
     }
 
-    public void servicios(int colegiaturas, double consultaMedica, double medicina, double seguro, double ocio, double higiene, double gastoTransporte){
-        serviciosGenerales gastos = new serviciosGenerales(colegiaturas, consultaMedica, medicina, seguro, ocio, higiene, gastoTransporte);
+    public void servicios(int colegiaturas, double consultaMedica, double medicina, double ocio, double higiene, double gastoTransporte){
+        serviciosGenerales gastos = new serviciosGenerales(colegiaturas, consultaMedica, medicina, ocio, higiene, gastoTransporte);
     }
 
 //-------------------------------------------------------------------------------------------
