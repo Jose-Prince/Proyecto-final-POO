@@ -269,13 +269,13 @@ public class InterfazGUI extends JFrame implements ActionListener {
 		rdbtnSiVehiculo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				tFMarca.setText("");
+				
 				tFMarca.setEnabled(true);
-				tFModelo.setText("");
+				
 				tFModelo.setEnabled(true);
-				tFLinea.setText("");
+				
 				tFLinea.setEnabled(true);
-				tFGasolina.setText("");
+				
 				tFGasolina.setEnabled(true);
 			}
 		});
@@ -388,31 +388,35 @@ public class InterfazGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (btnCrearInforme == e.getSource() ) {
-			String nombre = tFNombre.getText();
-			int edad = Integer.parseInt(tFEdad.getText());
-			String sexo = validarSexo();
-			long dpi = Long.parseLong(tFDpi.getText());
-			int habitantes = Integer.parseInt(tFHabitantes.getText());
-			boolean gastoCompartido = gastoCompartir();
-			double aporteDin = Double.parseDouble(tFDineroAportado.getText());
-			double alimentacion = Double.parseDouble(tFAlimentos.getText());
-			boolean alquiler = existenciaAlquiler();
-			double domicilio = Double.parseDouble(tFDomicilio.getText());
-			boolean trabajo = verificarTrabajo();
-			double salario = Double.parseDouble(tFSalario.getText());
-			boolean vehiculo = verificarVehiculo();
-			String marca = tFMarca.getText();
-			String modelo = tFModelo.getText();
-			String linea = tFLinea.getText();
-			double gasolina = Double.parseDouble(tFGasolina.getText());
-			double educacion = Double.parseDouble(tFEducacion.getText());
-			double consultaMedica = Double.parseDouble(tFConsulta.getText());
-			double medicina = Double.parseDouble(tFMedicina.getText());
-			double ocio = Double.parseDouble(tFOcio.getText());
-			double higiene = Double.parseDouble(tFHigiene.getText());
-			double transporte = Double.parseDouble(tFTransporte.getText());
-			String informe = comparador.crearInforme(nombre, edad, sexo, dpi, habitantes, gastoCompartido, aporteDin, alimentacion, alquiler, domicilio, trabajo, salario, vehiculo, marca, modelo, linea, gasolina, educacion, consultaMedica, medicina, ocio, higiene, transporte);
-			JOptionPane.showMessageDialog(null, "Informe de usuario: " + informe);
+			try {
+				String nombre = tFNombre.getText();
+				int edad = Integer.parseInt(tFEdad.getText());
+				String sexo = validarSexo();
+				long dpi = Long.parseLong(tFDpi.getText());
+				int habitantes = Integer.parseInt(tFHabitantes.getText());
+				boolean gastoCompartido = gastoCompartir();
+				double aporteDin = Double.parseDouble(tFDineroAportado.getText());
+				double alimentacion = Double.parseDouble(tFAlimentos.getText());
+				boolean alquiler = existenciaAlquiler();
+				double domicilio = Double.parseDouble(tFDomicilio.getText());
+				boolean trabajo = verificarTrabajo();
+				double salario = Double.parseDouble(tFSalario.getText());
+				boolean vehiculo = verificarVehiculo();
+				String marca = tFMarca.getText();
+				String modelo = tFModelo.getText();
+				String linea = tFLinea.getText();
+				double gasolina = Double.parseDouble(tFGasolina.getText());
+				double educacion = Double.parseDouble(tFEducacion.getText());
+				double consultaMedica = Double.parseDouble(tFConsulta.getText());
+				double medicina = Double.parseDouble(tFMedicina.getText());
+				double ocio = Double.parseDouble(tFOcio.getText());
+				double higiene = Double.parseDouble(tFHigiene.getText());
+				double transporte = Double.parseDouble(tFTransporte.getText());
+				String informe = comparador.crearInforme(nombre, edad, sexo, dpi, habitantes, gastoCompartido, aporteDin, alimentacion, alquiler, domicilio, trabajo, salario, vehiculo, marca, modelo, linea, gasolina, educacion, consultaMedica, medicina, ocio, higiene, transporte);
+				JOptionPane.showMessageDialog(null, "Informe de usuario: " + informe);
+			} catch (Exception i) {
+				JOptionPane.showMessageDialog(null, "No debe dejar casillas en blanco");
+			}
 		}
 		
 	}
