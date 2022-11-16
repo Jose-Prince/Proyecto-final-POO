@@ -30,7 +30,6 @@ public Calculos(){
     double salario, double dinAyuPersona, Automovil vehiculo, Vivienda casa, serviciosGenerales servicio){
         Usuario nuevoUsuario = new Usuario(nombre, edad, sexo, dpi, estadoLaboral, salario, dinAyuPersona, vehiculo, casa, servicio);
         usuarios.add(nuevoUsuario);
-        System.out.println("Usuario agregado");
     }
 
     public String compararSalario() {
@@ -159,6 +158,26 @@ public Calculos(){
             }
         }
         return registroCarro;
+    }
+
+    public double gastosGenerales(){
+        double gastos = 0;
+        for (Usuario usuario : usuarios) {
+            gastos = usuario.getDinAyuPersona() + usuario.getSalario() + usuario.getVehiculo().getGastoGasolina() + usuario.getCasa().getComida() + usuario.getCasa().getGastoDomicilio() + usuario.getServicio().getColegiaturas() + usuario.getServicio().getConsultaMedica() + usuario.getServicio().getGastoTransporte() +usuario.getServicio().getHigiene() + usuario.getServicio().getMedicina() + usuario.getServicio().getOcio();
+        }
+        return gastos;
+    }
+
+    public String gastosTotales() {
+        String registroTotal = "";
+        double gastos = gastosGenerales();
+        int porcentaje = (int) (gastos/capitalTotal());
+        if (capitalTotal() > gastos){
+            registroTotal += "\nTodos los gastos hechos hacen un total de Q." + gastos + ". Todos estos gastos son un " + porcentaje + "\ndel capital total.";
+        } else {
+            registroTotal += "\nTodos los gastos hechos hacen un total de Q." + gastos + ". Todos estos gastos son un " + porcentaje + "\n del capital total. Se recomienda hacer una reducción de gastos porque los gastos totales son superiores al capital total.";
+        }
+        return registroTotal;
     }
 
     public String crearInforme(String nombre, int edad, String sexo, long dpi, int habitantes, boolean gastoCompartido,

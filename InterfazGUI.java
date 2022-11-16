@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class InterfazGUI extends JFrame implements ActionListener {
 
@@ -69,6 +70,7 @@ public class InterfazGUI extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 717, 561);
 		panelPrincipal = new JPanel();
+		panelPrincipal.setForeground(Color.BLACK);
 		panelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(panelPrincipal);
 		panelPrincipal.setLayout(null);
@@ -171,11 +173,11 @@ public class InterfazGUI extends JFrame implements ActionListener {
 		panelPrincipal.add(lblDineroAportado);
 		
 		JLabel lblAlimentacion = new JLabel("Gastos en alimentación: ");
-		lblAlimentacion.setBounds(10, 250, 170, 13);
+		lblAlimentacion.setBounds(307, 299, 170, 13);
 		panelPrincipal.add(lblAlimentacion);
 		
 		tFAlimentos = new JTextField();
-		tFAlimentos.setBounds(169, 247, 96, 19);
+		tFAlimentos.setBounds(465, 296, 96, 19);
 		panelPrincipal.add(tFAlimentos);
 		tFAlimentos.setColumns(10);
 		
@@ -269,13 +271,13 @@ public class InterfazGUI extends JFrame implements ActionListener {
 		rdbtnSiVehiculo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				tFMarca.setText("");
 				tFMarca.setEnabled(true);
-				
+				tFModelo.setText("");
 				tFModelo.setEnabled(true);
-				
+				tFLinea.setText("");
 				tFLinea.setEnabled(true);
-				
+				tFGasolina.setText("");
 				tFGasolina.setEnabled(true);
 			}
 		});
@@ -324,56 +326,56 @@ public class InterfazGUI extends JFrame implements ActionListener {
 		tFGasolina.setColumns(10);
 		
 		JLabel lblEducacion = new JLabel("Gasto en educación:");
-		lblEducacion.setBounds(307, 207, 123, 13);
+		lblEducacion.setBounds(332, 207, 123, 13);
 		panelPrincipal.add(lblEducacion);
 		
 		tFEducacion = new JTextField();
-		tFEducacion.setBounds(440, 204, 96, 19);
+		tFEducacion.setBounds(465, 204, 96, 19);
 		panelPrincipal.add(tFEducacion);
 		tFEducacion.setColumns(10);
 		
 		JLabel lblGastoConsulta = new JLabel("Gasto en consulta médica: ");
-		lblGastoConsulta.setBounds(306, 229, 131, 13);
+		lblGastoConsulta.setBounds(294, 229, 170, 13);
 		panelPrincipal.add(lblGastoConsulta);
 		
 		tFConsulta = new JTextField();
-		tFConsulta.setBounds(440, 226, 96, 19);
+		tFConsulta.setBounds(465, 226, 96, 19);
 		panelPrincipal.add(tFConsulta);
 		tFConsulta.setColumns(10);
 		
 		JLabel lblMedicina = new JLabel("Gasto en medicina:");
-		lblMedicina.setBounds(306, 250, 124, 13);
+		lblMedicina.setBounds(332, 250, 124, 13);
 		panelPrincipal.add(lblMedicina);
 		
 		tFMedicina = new JTextField();
-		tFMedicina.setBounds(440, 247, 96, 19);
+		tFMedicina.setBounds(465, 247, 96, 19);
 		panelPrincipal.add(tFMedicina);
 		tFMedicina.setColumns(10);
 		
 		JLabel lblOcio = new JLabel("Gasto en ocio:");
-		lblOcio.setBounds(306, 290, 95, 13);
+		lblOcio.setBounds(360, 268, 95, 13);
 		panelPrincipal.add(lblOcio);
 		
 		tFOcio = new JTextField();
-		tFOcio.setBounds(440, 290, 96, 19);
+		tFOcio.setBounds(465, 270, 96, 19);
 		panelPrincipal.add(tFOcio);
 		tFOcio.setColumns(10);
 		
 		JLabel lblHigiene = new JLabel("Gasto en higiene:");
-		lblHigiene.setBounds(306, 322, 95, 13);
+		lblHigiene.setBounds(346, 322, 131, 13);
 		panelPrincipal.add(lblHigiene);
 		
 		tFHigiene = new JTextField();
-		tFHigiene.setBounds(440, 319, 96, 19);
+		tFHigiene.setBounds(465, 319, 96, 19);
 		panelPrincipal.add(tFHigiene);
 		tFHigiene.setColumns(10);
 		
 		JLabel lblTransporte = new JLabel("Gasto en transporte:");
-		lblTransporte.setBounds(305, 343, 105, 13);
+		lblTransporte.setBounds(332, 343, 152, 13);
 		panelPrincipal.add(lblTransporte);
 		
 		tFTransporte = new JTextField();
-		tFTransporte.setBounds(440, 340, 96, 19);
+		tFTransporte.setBounds(465, 340, 96, 19);
 		panelPrincipal.add(tFTransporte);
 		tFTransporte.setColumns(10);
 		
@@ -388,35 +390,31 @@ public class InterfazGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (btnCrearInforme == e.getSource() ) {
-			try {
-				String nombre = tFNombre.getText();
-				int edad = Integer.parseInt(tFEdad.getText());
-				String sexo = validarSexo();
-				long dpi = Long.parseLong(tFDpi.getText());
-				int habitantes = Integer.parseInt(tFHabitantes.getText());
-				boolean gastoCompartido = gastoCompartir();
-				double aporteDin = Double.parseDouble(tFDineroAportado.getText());
-				double alimentacion = Double.parseDouble(tFAlimentos.getText());
-				boolean alquiler = existenciaAlquiler();
-				double domicilio = Double.parseDouble(tFDomicilio.getText());
-				boolean trabajo = verificarTrabajo();
-				double salario = Double.parseDouble(tFSalario.getText());
-				boolean vehiculo = verificarVehiculo();
-				String marca = tFMarca.getText();
-				String modelo = tFModelo.getText();
-				String linea = tFLinea.getText();
-				double gasolina = Double.parseDouble(tFGasolina.getText());
-				double educacion = Double.parseDouble(tFEducacion.getText());
-				double consultaMedica = Double.parseDouble(tFConsulta.getText());
-				double medicina = Double.parseDouble(tFMedicina.getText());
-				double ocio = Double.parseDouble(tFOcio.getText());
-				double higiene = Double.parseDouble(tFHigiene.getText());
-				double transporte = Double.parseDouble(tFTransporte.getText());
-				String informe = comparador.crearInforme(nombre, edad, sexo, dpi, habitantes, gastoCompartido, aporteDin, alimentacion, alquiler, domicilio, trabajo, salario, vehiculo, marca, modelo, linea, gasolina, educacion, consultaMedica, medicina, ocio, higiene, transporte);
-				JOptionPane.showMessageDialog(null, "Informe de usuario: " + informe);
-			} catch (Exception i) {
-				JOptionPane.showMessageDialog(null, "No debe dejar casillas en blanco");
-			}
+			String nombre = tFNombre.getText();
+			int edad = Integer.parseInt(tFEdad.getText());
+			String sexo = validarSexo();
+			long dpi = Long.parseLong(tFDpi.getText());
+			int habitantes = Integer.parseInt(tFHabitantes.getText());
+			boolean gastoCompartido = gastoCompartir();
+			double aporteDin = Float.parseFloat(tFDineroAportado.getText());
+			double alimentacion = Float.parseFloat(tFAlimentos.getText());
+			boolean alquiler = existenciaAlquiler();
+			double domicilio = Float.parseFloat(tFDomicilio.getText());
+			boolean trabajo = verificarTrabajo();
+			double salario = Float.parseFloat(tFSalario.getText());
+			boolean vehiculo = verificarVehiculo();
+			String marca = tFMarca.getText();
+			String modelo = tFModelo.getText();
+			String linea = tFLinea.getText();
+			double gasolina = Float.parseFloat(tFGasolina.getText());
+			double educacion = Float.parseFloat(tFEducacion.getText());
+			double consultaMedica = Float.parseFloat(tFConsulta.getText());
+			double medicina = Float.parseFloat(tFMedicina.getText());
+			double ocio = Float.parseFloat(tFOcio.getText());
+			double higiene = Float.parseFloat(tFHigiene.getText());
+			double transporte = Float.parseFloat(tFTransporte.getText());
+			String informe = comparador.crearInforme(nombre, edad, sexo, dpi, habitantes, gastoCompartido, aporteDin, alimentacion, alquiler, domicilio, trabajo, salario, vehiculo, marca, modelo, linea, gasolina, educacion, consultaMedica, medicina, ocio, higiene, transporte);
+			JOptionPane.showMessageDialog(null, "Informe de usuario: " + informe);
 		}
 		
 	}
