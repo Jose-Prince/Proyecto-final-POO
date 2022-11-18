@@ -16,8 +16,13 @@ import javax.swing.ButtonGroup;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class InterfazGUI extends JFrame implements ActionListener {
+	
+	Conectar con;
 
 	Calculos comparador = new Calculos();
 	private JPanel panelPrincipal;
@@ -403,7 +408,7 @@ public class InterfazGUI extends JFrame implements ActionListener {
 				String marca = tFMarca.getText();
 				String modelo = tFModelo.getText();
 				String linea = tFLinea.getText();
-				double gasolina = Float.parseFloat(tFGasolina.getText());
+				double gasolina = Float.parseFloat(tFTransporte.getText());
 				double educacion = Float.parseFloat(tFEducacion.getText());
 				double consultaMedica = Float.parseFloat(tFConsulta.getText());
 				double medicina = Float.parseFloat(tFMedicina.getText());
@@ -412,12 +417,54 @@ public class InterfazGUI extends JFrame implements ActionListener {
 				double transporte = Float.parseFloat(tFTransporte.getText());
 				String informe = comparador.crearInforme(nombre, edad, sexo, dpi, habitantes, gastoCompartido, aporteDin, alimentacion, alquiler, domicilio, trabajo, salario, vehiculo, marca, modelo, linea, gasolina, educacion, consultaMedica, medicina, ocio, higiene, transporte);
 				JOptionPane.showMessageDialog(null, "Informe de usuario: " + informe);
+				
+				
+				con = new Conectar();
+				Connection reg = con.getConnection();
+							
+				
+				try {
+					
+					String query = "INSERT INTO usuario values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					PreparedStatement pst = reg.prepareStatement(query);
+					pst.setString(1, nombre);
+					pst.setInt(2, edad);
+					pst.setLong(3, dpi);
+					pst.setInt(4, habitantes);
+					pst.setDouble(5, aporteDin);
+					pst.setDouble(6, alimentacion);
+					pst.setDouble(7, domicilio);
+					pst.setDouble(8, salario);
+					pst.setString(9, marca);
+					pst.setString(10, modelo);
+					pst.setString(11, linea);
+					pst.setDouble(12, gasolina);
+					pst.setDouble(13, educacion);
+					pst.setDouble(14, consultaMedica);
+					pst.setDouble(15, medicina);
+					pst.setDouble(16, ocio);
+					pst.setDouble(17, higiene);
+					pst.setDouble(18, transporte);
+					
+					pst.executeUpdate();
+					
+					System.out.println("Registro exitoso..");
+					
+					pst.close();
+					
+				}catch(Exception e1) {
+					System.out.println("Error en el registro.. "+e1);
+				}
+								
 			} catch (Exception o) {
 				JOptionPane.showMessageDialog(null, "Debe de llenar todas las casillas");
 			}
 		}
 		
 	}
+	
+	
+	
 	private boolean verificarVehiculo() {
 		boolean vehiculo = false;
 		if (rdbtnSiVehiculo.isSelected()) {
